@@ -58,7 +58,6 @@
       })
     }
 
-
     function GoogleLogin() {
       console.log('Login Btn Call')
       firebase.auth().signInWithPopup(provider).then(res => {
@@ -90,7 +89,8 @@
       })
     }
 
-    checkAuthState()
+    //checkAuthState()
+    GoogleLogin()
 
   </script>
 </body>
