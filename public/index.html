@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireBase Google Auth Test</title>
+  <script type="module" src="/scripts/index.js"></script>
+</head>
+
+<body>
+  <h1>FireBase Google Auth Test</h1>  
+
+  <div id="LoginScreen">
+    <button id="login">Login with Google</button>
+  </div>
+
+  <div id="dashboard">
+    <div id="userDetails"></div>
+    <button id="logout">Logout</button>
+  </div>
+
+
+  
+
+<!--
+  <script>
+
+    document.getElementById('dashboard').style.display = "none"
+    document.getElementById('login').addEventListener('click', GoogleLogin)
+    document.getElementById('logout').addEventListener('click', LogoutUser)
+
+    let provider = new firebase.auth.GoogleAuthProvider()
+
+    //check if already Authenticated
+ 
+
+    function GoogleLogin() {
+      console.log('Login Btn Call')
+      firebaseApp.auth().signInWithPopup(provider).then(res => {
+        console.log(res.user)
+        showUserDetails(res.user)
+        document.getElementById('LoginScreen').style.display = "none"
+        document.getElementById('dashboard').style.display = "block"
+      }).catch(e => {
+        console.log(e)
+      })
+    }
+
+    function showUserDetails(user) {
+      document.getElementById('userDetails').innerHTML = `
+          <img src="${user.photoURL}" style="width:10%">
+          <p>Name: ${user.displayName}</p>
+          <p>Email: ${user.email}</p>
+        `
+    }
+
+    //user successfully logged out
+    function LogoutUser() {
+      console.log('Logout Btn Call')
+      firebase.auth().signOut().then(() => {
+        document.getElementById('LoginScreen').style.display = "block"
+        document.getElementById('dashboard').style.display = "none"
+      }).catch(e => {
+        console.log(e)
+      })
+    }
+  
+    //checkAuthState()
+    GoogleLogin()
+  </script>
+-->
+
+
+</body>
+
+</html>
