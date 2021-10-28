@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FireBase Google Auth Test</title>
+  <script type="module" src="/scripts/index.js"></script>
 </head>
 
 <body>
-  <h1>FireBase Google Auth Test</h1>
+  <h1>FireBase Google Auth Test</h1>  
 
   <div id="LoginScreen">
     <button id="login">Login with Google</button>
@@ -19,28 +20,12 @@
     <button id="logout">Logout</button>
   </div>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
 
-  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <!-- Firebase configuration-->
+<!--
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAxzPTkWTsGWOt8pXzyEZE9s0TG2zXLbg4",
-      authDomain: "rumii-44bc9.firebaseapp.com",
-      projectId: "rumii-44bc9",
-      storageBucket: "rumii-44bc9.appspot.com",
-      messagingSenderId: "464827417599",
-      appId: "1:464827417599:web:cd89342122f5b9aa759dca",
-      measurementId: "G-ZW8DSCG9PM"
-    };
 
-    //Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
     document.getElementById('dashboard').style.display = "none"
     document.getElementById('login').addEventListener('click', GoogleLogin)
     document.getElementById('logout').addEventListener('click', LogoutUser)
@@ -48,19 +33,11 @@
     let provider = new firebase.auth.GoogleAuthProvider()
 
     //check if already Authenticated
-    function checkAuthState() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          document.getElementById('LoginScreen').style.display = "none"
-          document.getElementById('dashboard').style.display = "block"
-          showUserDetails(user)
-        } else { }
-      })
-    }
+ 
 
     function GoogleLogin() {
       console.log('Login Btn Call')
-      firebase.auth().signInWithPopup(provider).then(res => {
+      firebaseApp.auth().signInWithPopup(provider).then(res => {
         console.log(res.user)
         showUserDetails(res.user)
         document.getElementById('LoginScreen').style.display = "none"
@@ -88,11 +65,13 @@
         console.log(e)
       })
     }
-
+  
     //checkAuthState()
     GoogleLogin()
-
   </script>
+-->
+
+
 </body>
 
 </html>
