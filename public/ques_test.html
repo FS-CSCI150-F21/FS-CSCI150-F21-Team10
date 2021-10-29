@@ -5,32 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FireBase Google Auth Test</title>
-  <script type="module" src="/scripts/ques.js"></script>
+
 </head>
 
 <body>
   <h1>The input element</h1>
-<div>
-  <form>
+
+  <form id="myForm">
     <label for="">how many rumiis?:</label>
-    <input type="text" id="rumiisID" name="rumiis" value="2"><br><br>
+    <input type="integer" id="rumii" name="rumii" required><br><br>
+    <!--
+      <label for="">monthly rent?:</label>
+      <input type="number" id="rentID" name="rent" ><br><br>
 
-    <label for="">monthly rent?:</label>
-    <input type="text" id="rentID" name="rent" value="500"><br><br>
-
-    <label for="">expected bills/expenses?</label>
-    <input type="text" id="billsID" name="bill" value="700"><br><br>
-
+      <label for="">expected bills/expenses?</label>
+      <input type="number" id="billsID" name="bill" ><br><br>
+  -->
     <button id="setBtn">submit</button>
     <button id="getBtn">show</button>
   </form>
-</div>
 
-
-
-
-
-
+  <script type="module" src="/scripts/initApp.js"></script>
+  <script type="module" src="/scripts/setColl.js"></script>
+  <script type="module" src="/scripts/getColl.js"></script>
 </body>
 
 </html>
