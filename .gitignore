@@ -1,0 +1,8 @@
+/node_modules
+/functions
+*.rules
+*.firebaserc
+*.log
+firebase.json
+package*.json
+keep.js
