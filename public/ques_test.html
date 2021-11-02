@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FireBase Google Auth Test</title>
+
+</head>
+
+<body>
+  <h1>The input element</h1>
+
+  <form id="quesForm">
+    <label>Name your home</label>
+    <input type="text" id="hNameID" required><br><br>
+
+    <label>How many roommates?</label>
+    <input type="number" id="hSizeID" min="1" required><br><br>
+
+    <label>How many rooms?</label>
+    <input type="number" id="noRoomID" min="1" required><br><br>
+
+    <label>Is your home a house or apartment?</label>
+    <input type="text" id="hTypeID" required><br><br>
+  
+    <button id="setBtn">set</button>
+  </form>
+
+  <form>  
+    <button id="getBtn">get</button> 
+    <label>Get Houses</label>
+    <output type="object" id="house"><br><br>
+  </form>
+
+
+  <script type="module" src="/scripts/initApp.js"></script>
+  <script type="module" src="/scripts/setColl.js"></script>
+  <script type="module" src="/scripts/getColl.js"></script>
+</body>
+
+</html>
