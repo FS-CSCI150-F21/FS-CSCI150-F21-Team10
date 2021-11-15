@@ -5,5 +5,7 @@ var db = getFirestore(app);
 
 async function query(searchID) {
 	const hNameID = db.child('hNameID');
-	const query = hNameID.orderByChild('hNameID').equalTo(searchID)
+	const query = hNameID.orderByChild('hNameID').equalTo(searchID).limitToFirst(1);
+	query.on('value', snap => {
+	});
 }
