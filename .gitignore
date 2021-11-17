@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /node_modules
 /functions
 *.rules
@@ -6,3 +7,6 @@
 firebase.json
 package*.json
 keep.js
+=======
+node_modules
+>>>>>>> origin/evan_dev

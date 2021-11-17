@@ -1,4 +1,8 @@
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import app from './initApp.js'
+
+var db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
