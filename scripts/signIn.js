@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import app from './initApp.js'
 
@@ -35,6 +35,14 @@ function GoogleLogin() {
       // ...
     });
 }
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location = 'questionnaire.html'; //After successful login, user will be redirected to home.html
+  }
+});
+
 /*
 function showUserDetails(user) {
   document.getElementById('userDetails').innerHTML = `
@@ -54,5 +62,5 @@ function LogoutUser() {
     console.log(e)
   });
 }
-
 */
+
