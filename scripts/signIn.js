@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import app from './initApp.js'
 
@@ -8,7 +8,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 document.getElementById('login').addEventListener('click', GoogleLogin)
-document.getElementById('logout').addEventListener('click', LogoutUser)
+//document.getElementById('logout').addEventListener('click', LogoutUser)
 
 function GoogleLogin() {
   signInWithPopup(auth, provider)
@@ -20,8 +20,9 @@ function GoogleLogin() {
       //display user info after successful login
       const user = result.user;
       console.log(result.user)
-      document.getElementById('LoginScreen').style.display = "none"
+    /*  document.getElementById('LoginScreen').style.display = "none"
       document.getElementById('dashboard').style.display = "block"
+      */
       showUserDetails(result.user)
 
     }).catch((error) => {
@@ -35,6 +36,14 @@ function GoogleLogin() {
     });
 }
 
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location = 'questionnaire.html'; //After successful login, user will be redirected to home.html
+  }
+});
+
+/*
 function showUserDetails(user) {
   document.getElementById('userDetails').innerHTML = `
     <img src="${user.photoURL}" style="width:10%">
@@ -42,6 +51,7 @@ function showUserDetails(user) {
     <p>Email: ${user.email}</p>
     `
 }
+
 
 function LogoutUser() {
   console.log('Logout Btn Call')
@@ -52,5 +62,5 @@ function LogoutUser() {
     console.log(e)
   });
 }
-
+*/
 
