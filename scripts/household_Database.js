@@ -1,32 +1,44 @@
-import { getFirestore, collection, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore, collection, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import app from './initApp.js'
 
 var db = getFirestore(app);
 
-const varDoc = await collection(db, "Household_database");
+const varDoc = collection(db, "Household_database");
 
-document.getElementById('setBtn').addEventListener('click', (e) => {
+document.getElementById('houseNameJoin').addEventListener('click', (e) => {
     e.preventDefault();
     setColl(db);
 })
 
 async function set_hname(db){
     await setDoc(doc(varDoc, "79fBCYsnORWzu528pPAX")), {
-        hname : document.getElementById('hNameID').value
+        hName : document.getElementById('houseName').value
     };
 }
 
 
-// function set_hsize(db){
-
-// } test////
-
-
-// function set_noroom(db){
-
-// }
+function set_hsize(db){
+    await setDoc(doc(varDoc, "79fBCYsnORWzu528pPAX")), {
+        hSize : parseInt(document.getElementById('numInHouse').value)
+    };
+}
 
 
-// function set_htype(db){
+function set_noroom(db){
+    await setDoc(doc(varDoc, "79fBCYsnORWzu528pPAX")), {
+        noRoom : parseInt(document.getElementById('numBedrooms').value)
+    };
+}
 
-// }
+
+function set_htype(db){
+    await setDoc(doc(varDoc, "79fBCYsnORWzu528pPAX")), {
+        hType : document.getElementById('houseOrApt').value
+    };
+}
+
+///////////////////////////////////////////////////////////////////////////////
+async function get_hname(db){
+    const printThis = getDoc(doc(varDoc, "79fBCYsnORWzu528pPAX"));
+    console.log(printThis.data());
+}
