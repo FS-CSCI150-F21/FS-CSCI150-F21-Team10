@@ -212,3 +212,45 @@ h2 {
   margin-top: 10px;
   padding-left: 22px;
 }
+
+#rentAmount {
+  display:none;
+}
+#rentBill:checked ~ #rentAmount {
+  display:block;
+}
+
+#electAmount {
+  display:none;
+}
+#electricBill:checked ~ #electAmount {
+  display:block;
+}
+
+#gasAmount {
+  display:none;
+}
+#gasBill:checked ~ #gasAmount {
+  display:block;
+}
+
+#waterAmount {
+  display:none;
+}
+#waterBill:checked ~ #waterAmount {
+  display:block;
+}
+
+#garbAmount {
+  display:none;
+}
+#garbageBill:checked ~ #garbAmount {
+  display:block;
+}
+
+#intAmount {
+  display:none;
+}
+#internetBill:checked ~ #intAmount {
+  display:block;
+}
