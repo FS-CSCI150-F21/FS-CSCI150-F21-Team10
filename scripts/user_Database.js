@@ -6,30 +6,35 @@ var db = getFirestore(app);
 const varDoc = collection(db, "User_database");
 var docName = "79fBCYsnORWzu528pPAX";
 
+//Questionare calling the setter functions
 document.getElementById('submitButton').addEventListener('click', (e) => {
     e.preventDefault();
-    set_userName(db);
-    set_emailAddress(db);
-    set_phoneNumber(db);
+    var inUserName = document.getElementById('usernameInput').value;
+    var inEmail = document.getElementById('emailInput').value;
+    var inPhoneNumber = document.getElementById('phoneNumberInput').value;
+    set_userName(db, docName, inUserName);
+    set_emailAddress(db, docName, inEmail);
+    set_phoneNumber(db, docName, inPhoneNumber);
 })
 
-async function set_userName(db){
-    await setDoc(doc(varDoc, docName), { 
-    userName : document.getElementById('usernameInput').value,
+//////////////////////////////////////////////////////////////////////////////////////////
+async function set_userName(db, docInput, fieldInput){
+    await setDoc(doc(varDoc, docInput), { 
+    userName : fieldInput,
     },
     {merge: true});
 }
 
-async function set_emailAddress(db){
-    await setDoc(doc(varDoc, docName), { 
-    emailAddress : document.getElementById('emailInput').value,
+async function set_emailAddress(db, docInput1, fieldInput1){
+    await setDoc(doc(varDoc, docInput1), { 
+    emailAddress : fieldInput1,
     },
     {merge: true});
 }
 
-async function set_phoneNumber(db){
-    await setDoc(doc(varDoc, docName), { 
-    phoneNumber : document.getElementById('phoneNumberInput').value,
+async function set_phoneNumber(db, docInput2, fieldInput2){
+    await setDoc(doc(varDoc, docInput2), { 
+    phoneNumber : fieldInput2,
     },
     {merge: true});
 }
