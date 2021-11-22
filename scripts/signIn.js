@@ -20,9 +20,6 @@ function GoogleLogin() {
       //display user info after successful login
       const user = result.user;
       console.log(result.user)
-    /*  document.getElementById('LoginScreen').style.display = "none"
-      document.getElementById('dashboard').style.display = "block"
-      */
       showUserDetails(result.user)
 
     }).catch((error) => {
@@ -36,7 +33,6 @@ function GoogleLogin() {
     });
 }
 
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.location = 'questionnaire.html'; //After successful login, user will be redirected to home.html
@@ -44,15 +40,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 /*
-function showUserDetails(user) {
-  document.getElementById('userDetails').innerHTML = `
-    <img src="${user.photoURL}" style="width:10%">
-    <p>Name: ${user.displayName}</p>
-    <p>Email: ${user.email}</p>
-    `
-}
-
-
 function LogoutUser() {
   console.log('Logout Btn Call')
   signOut(auth).then(() => {
