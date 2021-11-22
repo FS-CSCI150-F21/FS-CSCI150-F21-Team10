@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+  <title> RUMII - Questionnaire </title>
+  <link rel = "icon" href="./img/icon.png">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,6 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
 
   </head>
+
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -28,7 +31,7 @@
 
 <div class="row col-5">
   <h4 class="fw-bold text-center mt-3"></h4>
-  <form class=" bg-white px-4" action="">
+  <form class=" bg-white px-4" action="homepage.html">
     <!-- One Question: text -->
       <div class="form-group">
         <label for="usernameInput">1. Enter Username</label>
@@ -156,19 +159,18 @@
       </label>
          <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
     </div>
-    <a href="homepage.html"><button>Submit</button></a>
-
-    <!--<input type="button" value="Submit" class= "btn btn-secondary"> -->
-
+    
+  <!-- Submits to homepage -->
+    <input type="submit" value="Submit" class= "btn btn-secondary">
   </div>
 
   <div id = "ifJoin" style = "display:none">
     <div class="form-group" >
     <label for="houseNameJoin">4. Name of household joining?</label>
     <input type="text" class="form-control" id="houseNameJoin">
-    <a href="homepage.html"><button>Submit</button></a>
 
-    <!--  <input type="button" value="Submit" class= "btn btn-secondary"> -->
+    <!-- Submits to homepage -->
+    <input type="submit" value="Submit" class= "btn btn-secondary">
   </div>
 
   </form>

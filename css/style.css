@@ -20,16 +20,28 @@ a {
 .content {
   padding: 7rem 0; }
 
+.icon-Style{
+color: white;
+}
+
 .banner {
   background-color: #0592cd;
     }
 
 .banner-Contents{
+  display: inline-block;
   padding-left: 50px;
   padding-top: 10px;
   padding-bottom: 5px;
   color: white;
 }
+.banner-Back{
+  float: right;
+  padding-top: 17px;
+  padding-right: 50px;
+  display: inline-block;
+}
+
 h1{
   font-size: 30px;
 }
