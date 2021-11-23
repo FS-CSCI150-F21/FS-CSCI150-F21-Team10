@@ -5,10 +5,12 @@ import app from './initApp.js'
 var db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account'
+});
 const auth = getAuth();
 
-document.getElementById('login').addEventListener('click', GoogleLogin)
-//document.getElementById('logout').addEventListener('click', LogoutUser)
+document.getElementById('login').addEventListener('click', GoogleLogin);
 
 function GoogleLogin() {
   signInWithPopup(auth, provider)
@@ -33,21 +35,10 @@ function GoogleLogin() {
     });
 }
 
+//After successful login, user will be redirected to home.html
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location = 'questionnaire.html'; //After successful login, user will be redirected to home.html
+    window.location = 'questionnaire.html';
   }
 });
-
-/*
-function LogoutUser() {
-  console.log('Logout Btn Call')
-  signOut(auth).then(() => {
-    document.getElementById('LoginScreen').style.display = "block"
-    document.getElementById('dashboard').style.display = "none"
-  }).catch((error) => {
-    console.log(e)
-  });
-}
-*/
 

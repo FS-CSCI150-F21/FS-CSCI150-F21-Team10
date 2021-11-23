@@ -10,7 +10,7 @@ onAuthStateChanged(auth, (user) => {
     // will probably need userID later
     const uid = user.uid;
 
-    //display user name and photos
+    //display google user name and photos
     document.getElementById('username').innerHTML = `
     <p style="text-align:center"> ${user.displayName} </p>
     `
