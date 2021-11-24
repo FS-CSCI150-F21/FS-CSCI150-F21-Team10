@@ -7,18 +7,13 @@ var db = getFirestore(app);
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // will probably need userID later
-    const uid = user.uid;
-
-    //display google user name and photos
-    document.getElementById('username').innerHTML = `
-    <p style="text-align:center"> ${user.displayName} </p>
-    `
+    //display google photo in userPhoto classes
     var userPhoto = document.getElementsByClassName("userPhoto");
     for(var i=0;i<userPhoto.length;i++)
-    userPhoto[i].innerHTML = `<center><img src="${user.photoURL}" style="width:50%"></center>`;
+    userPhoto[i].innerHTML = `<center><img src="${user.photoURL}" style="width:100%;height:auto"></center>`;
 
   } else {
+    //if not signed in, redirect back to signin page
     window.location = 'index.html'; 
   }
 });

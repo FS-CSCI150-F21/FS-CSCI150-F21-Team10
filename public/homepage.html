@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <script type="module" src="/scripts/getCurrUser.js"></script>
+  <script type="module" src="/scripts/getGooglePhoto.js"></script>
   <script type="module" src="/scripts/signout.js"></script>
 </head>
 <title> RUMII - Dashboard </title>
@@ -50,12 +50,9 @@
           <a href="#" class="w3-bar-item w3-button"> Malee paid you Nike</a>
         </div>
       </div>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
-        title="My Account">
-
-        <div id="userPhoto" class="userPhoto" style="height:50px;width:50px" alt="Avatar"></div>
-
-      </a>
+  <a href="/public/profile.html" style="min-width:80px;max-width:8%" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+    <div class="userPhoto" alt="Avatar"></div>
+  </a>
     </div>
   </div>
 
@@ -80,7 +77,7 @@
               <div id="username"></div>
             </h4>
             <p class="w3-center">
-            <div id="userPhoto" class="userPhoto" alt="Avatar"></div>
+            <div class="userPhoto" alt="Avatar"></div>
             </p>
             <hr>
             <p><i class="fa fa-address-book fa-fw w3-margin-right w3-text-theme"></i> RUMII since Nov 2021</p>
