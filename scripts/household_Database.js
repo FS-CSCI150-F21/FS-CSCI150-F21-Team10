@@ -12,11 +12,12 @@ document.getElementById('submitButton').addEventListener('click', (e) => {
     var inHname = document.getElementById('houseName').value;
     var inHsize = document.getElementById('numInHouse').value;
     var inNoRoom = document.getElementById('numBedrooms').value;
-    //var inHname = document.getElementById('apt').value;
+    var inApt = document.getElementById('apt').value;
+    var inHouse = document.getElementById('apt').value;
     set_hname(db, docName, inHname);
     set_hsize(db, docName, inHsize);
     set_noroom(db, docName, inNoRoom);
-    set_htype(db, docName);
+    set_htype(db, docName, inApt, inHouse);
 })
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -43,15 +44,15 @@ async function set_noroom(db, docInput2, fieldInput2){
 }
 
 
-async function set_htype(db, docInput3){
-    var houseOrApt = "error";
-    if (document.getElementById('house').value){
-        houseOrApt = "house";
-    }
-    else if (document.getElementById('apt').value){
-        houseOrApt = "apartment";
-    }
-    else {}
+async function set_htype(db, docInput3, boolApt, boolHouse){
+    var houseOrApt = document.getElementById('house').value;
+    // if (document.getElementById('house').value){
+    //     houseOrApt = "house";
+    // }
+    // else if (document.getElementById('apt').value){
+    //     houseOrApt = "apartment";
+    // }
+    // else {}
 
     await setDoc(doc(varDoc, docInput3), {
         hType : houseOrApt

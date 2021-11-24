@@ -10,10 +10,8 @@ var docName = "79fBCYsnORWzu528pPAX";
 document.getElementById('submitButton').addEventListener('click', (e) => {
     e.preventDefault();
     var inUserName = document.getElementById('usernameInput').value;
-    var inEmail = document.getElementById('emailInput').value;
     var inPhoneNumber = document.getElementById('phoneNumberInput').value;
     set_userName(db, docName, inUserName);
-    set_emailAddress(db, docName, inEmail);
     set_phoneNumber(db, docName, inPhoneNumber);
 })
 
@@ -21,13 +19,6 @@ document.getElementById('submitButton').addEventListener('click', (e) => {
 async function set_userName(db, docInput, fieldInput){
     await setDoc(doc(varDoc, docInput), { 
     userName : fieldInput,
-    },
-    {merge: true});
-}
-
-async function set_emailAddress(db, docInput1, fieldInput1){
-    await setDoc(doc(varDoc, docInput1), { 
-    emailAddress : fieldInput1,
     },
     {merge: true});
 }

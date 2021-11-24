@@ -1,22 +1,27 @@
 <!doctype html>
 <html lang="en">
+  <title> RUMII - Questionnaire </title>
+  <link rel = "icon" href="./img/icon.png">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <!-- Style -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="module" src="/scripts/household_Database.js"></script>
+    <script type="module" src="/scripts/user_Database.js"></script>
   </head>
-  
+
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -28,22 +33,16 @@
 
 <div class="row col-5">
   <h4 class="fw-bold text-center mt-3"></h4>
-  <form class=" bg-white px-4" action="">
+  <form class=" bg-white px-4" action="homepage.html">
     <!-- One Question: text -->
       <div class="form-group">
         <label for="usernameInput">1. Enter Username</label>
         <input type="text" class="form-control" id="usernameInput">
       </div>
-    <!-- Second Question: text -->
 
-      <div class="form-group">
-        <label for="emailInput">2. Enter your Gmail</label>
-        <input type="email" class="form-control" id="emailInput" placeholder="example@gmail.com">
-        </div>
-
-    <!-- Third Question: Number text -->
+    <!-- Second Question: Number text -->
     <div class="form-group">
-        <label for="phoneNumberInput">3. Enter your phone number</label>
+        <label for="phoneNumberInput">2. Enter your phone number</label>
         <input type="tel" class="form-control" id="phoneNumberInput">
     </div>
 
@@ -62,8 +61,8 @@
       }
       </script>
 
-    <!-- Fourth Question: Multiple Choice -->
-    <label for="joinHouse createHouse" >4. Are you creating a household or joining a household?</label>
+    <!-- Third Question: Multiple Choice -->
+    <label for="joinHouse createHouse" >3. Are you creating a household or joining a household?</label>
     <div class="form-check mb-2">
       <input class="form-check-input" type="radio" name="createOrJoin" id="joinHouse" onclick = "showHideHouse()">
       <label class="form-check-label" for="joinHouse">
@@ -78,48 +77,49 @@
       </label>
     </div>
 
-    <!-- Fifth Question: Text -->
+    <!-- fourth Question: Text -->
     <div id = "ifCreate" style = "display:none">
     <div class="form-group" >
-      <label for="houseName">5. What is your house name?</label>
+      <label for="houseName">4. What is your house name?</label>
       <input type="text" class="form-control" id="houseName">
     </div>
 
-    <!-- Sixth Question: Text Number -->
+    <!-- Fifth Question: Text Number -->
     <div class="form-group">
-      <label for="numInHouse">6. Number of members in your household?</label>
-      <input type="number" class="form-control" id="numInHouse" min="0">
+      <label for="numInHouse">5. Number of members in your household?</label>
+      <input type="number" class="form-control" id="numInHouse">
     </div>
 
-    <!-- Seventh Question: Multiple Choice -->
-    <label for="house apt">7. House or an apartment</label>
+    <!-- sicth Question: Multiple Choice -->
+    <label for="house apt">6. House or an apartment</label>
     <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" name="houseOrApt" id="house">
+      <input class="form-check-input" type="radio" name="houseOrApt" id="house" checked>
       <label class="form-check-label" for="house">
         House
       </label>
     </div>
   
     <div class="form-check mb-2">
-      <input class="form-check-input" type="radio" name="houseOrApt" id="apt" >
-      <label class="form-check-label" for="apt">
+      <input class="form-check-input" type="radio" name="houseOrApt" id="apt" checked>
+      <label class="form-check-label" for="apt" >
         Apartment
       </label>
     </div>
 
-    <!-- Eight Question: Text Number -->
+    <!-- Seventh Question: Text Number -->
     <div class="form-group">
-      <label for="numBedrooms">8. How many bedrooms are in your household?</label>
-      <input type="number" class="form-control" id="numBedrooms" min="0">
+      <label for="numBedrooms">7. How many bedrooms are in your household?</label>
+      <input type="number" class="form-control" id="numBedrooms">
     </div>
 
-    <!-- Ninth Question: Check boxes-->
-    <label for="rentBill electricBill gasBill waterBill garbageBill internetBill">9. What bills are needed for this household?</label>
+    <!-- Eight Question: Check boxes-->
+    <label for="rentBill electricBill gasBill waterBill garbageBill internetBill">8. What bills are needed for this household?</label>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="rentBill" />
       <label class="form-check-label" for="rentBill">
         Rent
       </label>
+         <input type="number" placeholder="Bill Amount" id="rentAmount" name="rentAmount"/>
     </div>
 
     <div class="form-check">
@@ -127,6 +127,7 @@
       <label class="form-check-label" for="electricBill">
         Electric
       </label>
+         <input type="number" placeholder="Bill Amount" id="electAmount" name="electAmount"/>
     </div>
 
     <div class="form-check">
@@ -134,6 +135,7 @@
       <label class="form-check-label" for="gasBill">
         Gas
       </label>
+         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount">
     </div>
 
     <div class="form-check">
@@ -141,6 +143,7 @@
       <label class="form-check-label" for="waterBill">
         Water
       </label>
+         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount">
     </div>
 
     <div class="form-check">
@@ -148,6 +151,7 @@
       <label class="form-check-label" for="garbageBill">
         Garbage
       </label>
+         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount">
     </div>
 
     <div class="form-check">
@@ -155,24 +159,27 @@
       <label class="form-check-label" for="internetBill">
         Internet
       </label>
+         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
     </div>
     
-    <input type="submit" value="Submit" class= "btn btn-secondary" id= "submitButton">
-
+  <!-- Submits to homepage -->
+    <input type="submit" value="Submit" class= "btn btn-secondary" id="submitButton">
   </div>
 
   <div id = "ifJoin" style = "display:none">
     <div class="form-group" >
-    <label for="houseNameJoin">5. Name of household joining?</label>
+    <label for="houseNameJoin">4. Name of household joining?</label>
     <input type="text" class="form-control" id="houseNameJoin">
-    <input type="submit" value="Submit" class= "btn btn-secondary">
+
+    <!-- Submits to homepage -->
+    <input type="submit" value="Submit" class= "btn btn-secondary" id="submitButton">
   </div>
 
   </form>
 </div>
-    <script src="/scripts/jquery-3.3.1.min.js"></script>
-    <script src="/scripts/popper.min.js"></script>
-    <script src="/scripts/bootstrap.min.js"></script>
-    <script src="/scripts/main.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
