@@ -1,4 +1,4 @@
-import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore, collection, query, doc, where, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import app from './initApp.js'
 
@@ -9,7 +9,6 @@ const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
-    console.log(user.uid, " ", user.displayName);
     lookupUser(uid);
     
 } else {
@@ -19,6 +18,7 @@ onAuthStateChanged(auth, (user) => {
 }
 });
 
+// lookup user in userDB with auth uid
 async function lookupUser(uid){
   const docRef = doc(db, "User_database", uid);
   const docSnap = await getDoc(docRef);
@@ -30,10 +30,24 @@ async function lookupUser(uid){
       docSnap.data().email;
       document.getElementById('phoneID').innerHTML = 
       docSnap.data().phone;
-  
+      // query house name in houseDB with houseID
+      var hID = docSnap.data().houseID;
+      queryHname(db, hID );
+     
   } else {
     // doc.data() will be undefined in this case
-    console.log("No such document!");
+    console.log("user not found");
   }
+}
 
+async function queryHname(db, hID) { 
+  const docRef = doc(db, "Household_database", hID);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    document.getElementById('houseID').innerHTML = 
+        docSnap.data().hName;
+  } else {
+    console.log("House not found");
+  }
 }
