@@ -1,0 +1,17 @@
+.card
+{
+    margin-left: 150px;
+    margin-right: 200px;
+}
+.setRemind
+{
+    text-align: right;
+    padding: 10px 0px;
+    float: right;
+}
+.reqPayment
+{
+    text-align: right;
+    padding: 10px 0px;
+    float: right;
+}
