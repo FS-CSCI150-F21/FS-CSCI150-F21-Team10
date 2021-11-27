@@ -35,7 +35,6 @@ async function lookupUser(uid){
       queryHname(db, hID );
      
   } else {
-    // doc.data() will be undefined in this case
     console.log("user not found");
   }
 }
