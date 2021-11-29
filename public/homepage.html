@@ -38,8 +38,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
   <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Dashboard</a>
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Household</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Notification</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+    <a href="/public/profile.html" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
   </div>
 
   <!-- Page Container -->
@@ -84,7 +83,45 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
 
             </div>
           </div>
+<<<<<<< Updated upstream
           <button type="button" style = "background-color: #0592cd; color: white; border-radius: 2px;" class="w3-button w3-margin-bottom"><i class="fa fa-pencil-square"></i>  View all </button>  
+=======
+          <!--Trigger the pop up -->
+          <button id = "manage-modal" button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-pencil-square"></i>  View
+            all </button>
+
+          <!--The modal / pop up -->
+          <div id = "manageModal" class = "modal">
+
+            <!--Modal Content-->
+            <div class = "manage-content">
+              <span class = "close">&times;</span>
+              <!--Displaying the bills / Pull data from database-->
+              <table>
+                <tr>
+                  <th>Bills</th>
+                  <th>Amount ($)</th>
+                </tr>
+                <tr>
+                  <td> PG & E </td>
+                  <td> 100 </td>
+                </tr>
+                <tr>
+                  <td> Grocery </td>
+                  <td> 25 </td>
+                </tr>
+                <tr>
+                  <td> Mcdonald's </td>
+                  <td> 6 </td>
+                </tr>
+                <tr>
+                  <td> BBQ </td>
+                  <td> 25 </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+>>>>>>> Stashed changes
         </div>
 
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
@@ -93,8 +130,16 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.</p>
+<<<<<<< Updated upstream
           <button type="button" style = "background-color: #0592cd; color: white; border-radius: 2px;" class="w3-button btn-primary w3-margin-bottom"><i class="fa fa-credit-card"></i>  Pay </button> 
+=======
+          <button id = "pay-bills" button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-credit-card"></i>  Pay
+>>>>>>> Stashed changes
           </button>
+            <!--The Modal for Pay Bill -->
+          <div id = "payModal" class = "modal">
+
+          </div>
 
         </div>
 
@@ -157,6 +202,30 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
         x.className = x.className.replace(" w3-show", "");
       }
     }
+
+    //For modal pop up on manage bills and pay bills 
+    var modal = document.getElementById("manageModal");
+
+    var btn = document.getElementById("manage-modal");
+
+    var span = document.getElementsByClassName("close")[0]; 
+
+    //Modal displayed when user click the button 
+    btn.onclick = function(){
+      modal.style.display = "block"; 
+    }
+
+    //When user clicks on <span> (x), close the modal 
+    span.onclick = function(){
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event){
+      if(event.target == modal){
+        modal.style.display = "none";
+      }
+    }
+
   </script>
 
 </body>
