@@ -17,7 +17,6 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css">
-    <script type="module" src="/scripts/Bill_Distribution.js"></script>
     <script type="module" src="/scripts/household_Database.js"></script>
     <script type="module" src="/scripts/user_Database.js"></script>
   </head>
@@ -115,7 +114,7 @@
     <!-- Eight Question: Check boxes-->
     <label for="rentBill electricBill gasBill waterBill garbageBill internetBill">8. What bills are needed for this household?</label>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Rent" id="rentBill" checked />
+      <input class="form-check-input" type="checkbox" value="Rent" id="rentBill" />
       <label class="form-check-label" for="rentBill">
         Rent
       </label>
@@ -123,7 +122,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Electric" id="electricBill" checked />
+      <input class="form-check-input" type="checkbox" value="Electric" id="electricBill" />
       <label class="form-check-label" for="electricBill">
         Electric
       </label>
@@ -131,35 +130,35 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Gas" id="gasBill" checked />
+      <input class="form-check-input" type="checkbox" value="Gas" id="gasBill" />
       <label class="form-check-label" for="gasBill">
         Gas
       </label>
-         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount">
+         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount" />
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Water" id="waterBill" checked/>
+      <input class="form-check-input" type="checkbox" value="Water" id="waterBill" />
       <label class="form-check-label" for="waterBill">
         Water
       </label>
-         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount">
+         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount" />
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Garbage" id="garbageBill" checked/>
+      <input class="form-check-input" type="checkbox" value="Garbage" id="garbageBill" />
       <label class="form-check-label" for="garbageBill">
         Garbage
       </label>
-         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount">
+         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount" />
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Internet" id="internetBill" checked/>
+      <input class="form-check-input" type="checkbox" value="Internet" id="internetBill" />
       <label class="form-check-label" for="internetBill">
         Internet
       </label>
-         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
+         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount" />
     </div>
     
   <!-- Submits to homepage -->
@@ -172,7 +171,7 @@
     <input type="text" class="form-control" id="houseNameJoin" >
 
     <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" >
+    <input type="submit" value="Submit" class= "btn btn-secondary" id="Qsub" >
   </div>
 
   </form>
