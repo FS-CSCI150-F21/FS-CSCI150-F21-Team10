@@ -1,11 +1,11 @@
 import { getFirestore, collection, doc, setDoc, getDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
-//import {set_houseId} from '/scripts/user_Database.js'
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from './initApp.js'
 
 var db = getFirestore(app);
 
 const varDoc = collection(db, "Household_database");
-const varDoc2 = collection(db, "user_database");
+const varDoc2 = collection(db, "User_database");
 
 var billNames = [];
 var billAmounts = [];
@@ -26,11 +26,7 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
     var inUserName = document.getElementById('usernameInput').value;
     //var inHouse = document.getElementById('apt').value;
 
-<<<<<<< HEAD
-    //var billAvg = 100/inHsize;
-=======
     
->>>>>>> abdul_dev
    
     var tempCheck = [
                     document.getElementById('rentBill'), document.getElementById('electricBill'), document.getElementById('gasBill'),
@@ -51,37 +47,32 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
             c++;
         }
     }
-<<<<<<< HEAD
-
-=======
       
->>>>>>> abdul_dev
     newHouse(inHname, inHsize, inApt, inNoRoom, inUserName); 
 
 })
 
 //creates a new document in household_database
-async function newHouse(input1,input2,input3,input4,input5){
-    var billAvg = 100/input2;
+async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
+    var billAvg = 100/hSizeIn;
+    const user = getAuth().currentUser;
     const newHouseDoc = await addDoc(varDoc, {
-        hName: input1,
-        hSize: input2,
-        hType: input3,
-        noRoom: input4,
-        rumiis: [input5],
+        hName: hNameIn,
+        hSize: hSizeIn,
+        hType: hTypeIn,
+        noRoom: noRoomIn,
+        rumiis: [rumiiIN],
     })
 
     .then(function(docRef) {
-<<<<<<< HEAD
-=======
         //makes "Bills" sub-collection
->>>>>>> abdul_dev
         makeBills(billAmounts, billAvg, billNames, docRef.id);
         // adds the houseID into the house doc itself, in case we need it
         setDoc(doc(varDoc, docRef.id), {
             houseID: docRef.id
         },
         {merge: true});
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
         
@@ -91,12 +82,17 @@ async function newHouse(input1,input2,input3,input4,input5){
         //     houseID: docRef.id
         // },
         // {merge: true});
+=======
+        // add the houseID into the users document 
+        const newUserDoc = setDoc(doc(varDoc2, user.uid), {
+            houseID: docRef.id
+        },
+        {merge: true});
+>>>>>>> Stashed changes
     })
     .catch(function(error){
         console.error("error: ", error);
     });
-
-
 }
 
 async function makeBills(bamt, bavg, bname, hid){
