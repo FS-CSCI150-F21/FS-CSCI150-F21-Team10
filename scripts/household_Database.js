@@ -27,10 +27,27 @@ async function newHouse(input1,input2,input3,input4,input5){
         hSize: input2,
         hType: input3,
         noRoom: input4,
-        rumiis: [input5,"","","","","","","",""]
+        rumiis: [input5],
+    })
+    .then(function(docRef) {
+        // adds the houseID into the house doc itself, in case we need it
+        setDoc(doc(varDoc, docRef.id), {
+            houseID: docRef.id
+        },
+        {merge: true});
+        setDoc(collection(db, "Household_database", docRef.id), {
+            bills
+        });
+        // adds the houseID into the user doc, not done yet
+        // setDoc(doc(varDoc2, getAuth()), {
+        //     houseID: docRef.id
+        // },
+        // {merge: true});
+    })
+    .catch(function(error){
+        console.error("error: ", error);
     });
-    //sets the householdID into the user database
-    await set_houseId(varDoc2, "userData", newHouseDoc.id);
+
 }
 
 /////////////////////////////////////////////////////////////////////////////
