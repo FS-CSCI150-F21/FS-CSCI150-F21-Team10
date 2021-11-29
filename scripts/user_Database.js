@@ -18,7 +18,6 @@ async function newUser(input1,input2){
     const newHouseDoc = await addDoc(varDoc, {
         userName: input1,
         phoneNumber: input2,
-        //houseId: input3
     });
 }
 
