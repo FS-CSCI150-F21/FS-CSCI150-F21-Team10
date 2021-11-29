@@ -1,6 +1,6 @@
 import { getFirestore, collection, doc, setDoc, getDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
-import {set_houseId} from '/scripts/user_Database.js'
-import app from '../scripts/initApp.js'
+//import {set_houseId} from '/scripts/user_Database.js'
+import app from './initApp.js'
 
 var db = getFirestore(app);
 
@@ -15,7 +15,8 @@ var b = 0;
 var c = 0;
 
 //Questionare calling the setter functions
-document.getElementById('submitButton').addEventListener('click', (e) => {
+
+document.getElementById('Qsub').addEventListener('click', (e) => {
     e.preventDefault();
 
     var inHname = document.getElementById('houseName').value;
@@ -25,7 +26,11 @@ document.getElementById('submitButton').addEventListener('click', (e) => {
     var inUserName = document.getElementById('usernameInput').value;
     //var inHouse = document.getElementById('apt').value;
 
+<<<<<<< HEAD
     //var billAvg = 100/inHsize;
+=======
+    
+>>>>>>> abdul_dev
    
     var tempCheck = [
                     document.getElementById('rentBill'), document.getElementById('electricBill'), document.getElementById('gasBill'),
@@ -46,8 +51,13 @@ document.getElementById('submitButton').addEventListener('click', (e) => {
             c++;
         }
     }
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> abdul_dev
     newHouse(inHname, inHsize, inApt, inNoRoom, inUserName); 
+
 })
 
 //creates a new document in household_database
@@ -60,13 +70,22 @@ async function newHouse(input1,input2,input3,input4,input5){
         noRoom: input4,
         rumiis: [input5],
     })
+
     .then(function(docRef) {
+<<<<<<< HEAD
+=======
+        //makes "Bills" sub-collection
+>>>>>>> abdul_dev
         makeBills(billAmounts, billAvg, billNames, docRef.id);
         // adds the houseID into the house doc itself, in case we need it
         setDoc(doc(varDoc, docRef.id), {
             houseID: docRef.id
         },
         {merge: true});
+<<<<<<< HEAD
+=======
+        
+>>>>>>> abdul_dev
         // adds the houseID into the user doc, not done yet
         // setDoc(doc(varDoc2, getAuth()), {
         //     houseID: docRef.id
@@ -77,10 +96,12 @@ async function newHouse(input1,input2,input3,input4,input5){
         console.error("error: ", error);
     });
 
+
 }
 
 async function makeBills(bamt, bavg, bname, hid){
 
+<<<<<<< HEAD
     for(let i = 0; i < bname.length; i++ ){
          await setDoc(doc(db, "Household_database", "08RQSrjL9vjIhH14yXMp", "Bills", bname[i]), {
             amount : parseInt(bamt[i]),
@@ -90,6 +111,19 @@ async function makeBills(bamt, bavg, bname, hid){
         }
          //insert for loop when custom billPer  is implemented
 }
+=======
+     for(let i = 0; i < bname.length; i++ ){
+         if(bname[i]!=null){
+          await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
+             amount : parseInt(bamt[i]),
+             billPer : bavg
+             // due : dueDateArr[i]
+          });
+        }
+         }
+          //insert for loop when custom billPer  is implemented
+ }
+>>>>>>> abdul_dev
 
 /////////////////////////////////////////////////////////////////////////////
 async function set_hname(dbInput, docInput, fieldInput){
