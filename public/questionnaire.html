@@ -8,18 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="/css/style.css">
   </head>
-
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -84,8 +82,8 @@
 
     <!-- Fifth Question: Text Number -->
     <div class="form-group">
-      <label for="numInHouse">5. Number of members in your household?</label>
-      <input type="number" class="form-control" id="numInHouse">
+      <label for="numInHouse">6. Number of members in your household?</label>
+      <input type="number" class="form-control" id="numInHouse" min="0">
     </div>
 
     <!-- sicth Question: Multiple Choice -->
@@ -106,8 +104,8 @@
 
     <!-- Seventh Question: Text Number -->
     <div class="form-group">
-      <label for="numBedrooms">7. How many bedrooms are in your household?</label>
-      <input type="number" class="form-control" id="numBedrooms">
+      <label for="numBedrooms">8. How many bedrooms are in your household?</label>
+      <input type="number" class="form-control" id="numBedrooms" min="0">
     </div>
 
     <!-- Eight Question: Check boxes-->
@@ -160,8 +158,10 @@
          <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
     </div>
     
+
   <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary">
+    <input type="submit" value="Submit" class= "btn btn-secondary" id= "submitButton">
+
   </div>
 
   <div id = "ifJoin" style = "display:none">
@@ -175,9 +175,9 @@
 
   </form>
 </div>
-  <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/popper.min.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/main.js"></script>
 </body>
 </html>
