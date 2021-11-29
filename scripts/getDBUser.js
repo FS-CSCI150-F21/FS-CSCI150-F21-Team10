@@ -32,7 +32,7 @@ async function lookupUser(uid){
       docSnap.data().phone;
       // query house name in houseDB with houseID
       var hID = docSnap.data().houseID;
-      queryHname(db, hID );
+      queryHname(db, hID);
      
   } else {
     console.log("user not found");
