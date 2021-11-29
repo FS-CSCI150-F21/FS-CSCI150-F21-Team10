@@ -20,16 +20,28 @@ a {
 .content {
   padding: 7rem 0; }
 
+.icon-Style{
+color: white;
+}
+
 .banner {
   background-color: #0592cd;
     }
 
 .banner-Contents{
+  display: inline-block;
   padding-left: 50px;
   padding-top: 10px;
   padding-bottom: 5px;
   color: white;
 }
+.banner-Back{
+  float: right;
+  padding-top: 17px;
+  padding-right: 50px;
+  display: inline-block;
+}
+
 h1{
   font-size: 30px;
 }
@@ -211,4 +223,46 @@ h2 {
 {
   margin-top: 10px;
   padding-left: 22px;
+}
+
+#rentAmount {
+  display:none;
+}
+#rentBill:checked ~ #rentAmount {
+  display:block;
+}
+
+#electAmount {
+  display:none;
+}
+#electricBill:checked ~ #electAmount {
+  display:block;
+}
+
+#gasAmount {
+  display:none;
+}
+#gasBill:checked ~ #gasAmount {
+  display:block;
+}
+
+#waterAmount {
+  display:none;
+}
+#waterBill:checked ~ #waterAmount {
+  display:block;
+}
+
+#garbAmount {
+  display:none;
+}
+#garbageBill:checked ~ #garbAmount {
+  display:block;
+}
+
+#intAmount {
+  display:none;
+}
+#internetBill:checked ~ #intAmount {
+  display:block;
 }
