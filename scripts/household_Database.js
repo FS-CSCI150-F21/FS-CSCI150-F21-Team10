@@ -1,4 +1,4 @@
-import { getFirestore, collection, doc, setDoc, getDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, query, where} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from './initApp.js'
 
@@ -14,8 +14,7 @@ billNames.length = 6;
 var b = 0;
 var c = 0;
 
-//Questionare calling the setter functions
-
+//Create Household event listener
 document.getElementById('Qsub').addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -47,10 +46,45 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
             c++;
         }
     }
-      
+    
     newHouse(inHname, inHsize, inApt, inNoRoom, inUserName); 
 
 })
+
+//join household event listener
+document.getElementById('Qsub2').addEventListener('click', (e) => {
+    e.preventDefault();
+    var houseJoinIn = document.getElementById('houseNameJoin').value;
+    var addRumii = document.getElementById('usernameInput').value;
+    findHouse(houseJoinIn, addRumii);
+})
+
+//finds the house name and adds the user to the house
+async function findHouse(searchID, newRumii) {
+    const user = getAuth().currentUser;
+	const q = query(varDoc, where("hName", "==", searchID));
+    const qSnapshot = await getDocs(q);
+    if(!(qSnapshot.empty)){
+        qSnapshot.forEach((currentDoc) => {
+            var rumiiArray = currentDoc.data().rumiis;
+            rumiiArray.push(newRumii)
+            console.log(rumiiArray);
+            //sends new array to householdDB
+            setDoc(doc(varDoc, currentDoc.id), {
+                rumiis: rumiiArray
+            },
+            {merge: true});
+            //sends houseID to userDB to link them together
+            setDoc(doc(varDoc2, user.uid), {
+                houseID: currentDoc.data().houseID
+            },
+            {merge: true});
+        });
+    }
+    else{
+        console.log("Could not find house");
+    }
+}
 
 //creates a new document in household_database
 async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
@@ -72,7 +106,7 @@ async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
             houseID: docRef.id
         },
         {merge: true});
-
+        //adds the houseID to the Userdatabase to connect the two
         const newUserDoc = setDoc(doc(varDoc2, user.uid), {
             houseID: docRef.id
         },
