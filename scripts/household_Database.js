@@ -72,23 +72,11 @@ async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
             houseID: docRef.id
         },
         {merge: true});
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-        
->>>>>>> abdul_dev
-        // adds the houseID into the user doc, not done yet
-        // setDoc(doc(varDoc2, getAuth()), {
-        //     houseID: docRef.id
-        // },
-        // {merge: true});
-=======
-        // add the houseID into the users document 
+
         const newUserDoc = setDoc(doc(varDoc2, user.uid), {
             houseID: docRef.id
         },
         {merge: true});
->>>>>>> Stashed changes
     })
     .catch(function(error){
         console.error("error: ", error);
@@ -97,17 +85,6 @@ async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
 
 async function makeBills(bamt, bavg, bname, hid){
 
-<<<<<<< HEAD
-    for(let i = 0; i < bname.length; i++ ){
-         await setDoc(doc(db, "Household_database", "08RQSrjL9vjIhH14yXMp", "Bills", bname[i]), {
-            amount : parseInt(bamt[i]),
-            billPer : bavg
-            // due : dueDateArr[i]
-         });
-        }
-         //insert for loop when custom billPer  is implemented
-}
-=======
      for(let i = 0; i < bname.length; i++ ){
          if(bname[i]!=null){
           await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
@@ -119,7 +96,6 @@ async function makeBills(bamt, bavg, bname, hid){
          }
           //insert for loop when custom billPer  is implemented
  }
->>>>>>> abdul_dev
 
 /////////////////////////////////////////////////////////////////////////////
 async function set_hname(dbInput, docInput, fieldInput){
