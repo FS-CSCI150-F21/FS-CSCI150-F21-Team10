@@ -20,10 +20,15 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
 
     var inHname = document.getElementById('houseName').value;
     var inHsize = parseInt(document.getElementById('numInHouse').value);
-    var inApt = parseInt(document.getElementById('house').value);
     var inNoRoom = parseInt(document.getElementById('numBedrooms').value);
     var inUserName = document.getElementById('usernameInput').value;
-    //var inHouse = document.getElementById('apt').value;
+    var inHouse = document.getElementById('house');
+    var houseBool = 1;
+    if (inHouse.checked == true){
+        houseBool = 1;
+    } else{
+        houseBool = 0;
+    }
 
     
    
@@ -47,7 +52,7 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
         }
     }
     
-    newHouse(inHname, inHsize, inApt, inNoRoom, inUserName); 
+    newHouse(inHname, inHsize, houseBool, inNoRoom, inUserName); 
 
 })
 
@@ -148,6 +153,7 @@ async function set_hsize(dbInput1, docInput1, fieldInput1){
 
 
 async function set_noroom(dbInput2, docInput2, fieldInput2){
+    //apt = 0, house = 1
     await setDoc(doc(dbInput2, docInput2), {
         noRoom : fieldInput2
     },
@@ -155,9 +161,9 @@ async function set_noroom(dbInput2, docInput2, fieldInput2){
 }
 
 
-async function set_htype(dbInput3, docInput3, boolApt, boolHouse){
+async function set_htype(dbInput3, docInput3, boolHouse){
     await setDoc(doc(dbInput3, docInput3), {
-        hType : inApt
+        hType : boolHouse
     },
     {merge: true});
 }
