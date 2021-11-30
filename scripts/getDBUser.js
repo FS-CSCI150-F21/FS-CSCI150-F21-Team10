@@ -28,7 +28,7 @@ async function lookupUser(uid){
       document.getElementById('usernameID').innerHTML = 
       docSnap.data().userName;
       document.getElementById('emailID').innerHTML = 
-      docSnap.data().emailAddress;
+      docSnap.data().email;
       document.getElementById('phoneID').innerHTML = 
       docSnap.data().phoneNumber;
       // query house name in houseDB with houseID
