@@ -26,9 +26,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
   <div class="w3-top" style = "background-color: #0592cd;" >
     <div class="w3-bar w3-left-align w3-large">
       <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-        <a href="#" style = "background-color: #0592cd; color: white;" class="w3-bar-item w3-button w3-padding-large "><i class="fa fa-home w3-margin-right"></i>RUMII</a>
+        <a href="/public/homepage.html" style = "background-color: #0592cd; color: white;" class="w3-bar-item w3-button w3-padding-large "><i class="fa fa-home w3-margin-right"></i>RUMII</a>
         <a href="household.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" style = " color: white;" title="Household"><i class="fa fa-users"></i></a>
-        <a href="profile.html"  style = "background-color: #0592cd;" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+        <a href="/public/profile.html"  style = "background-color: #0592cd;" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
           <div class="userPhoto" class="w3-circle" style="height:23px;width:23px" alt="Avatar"></div>
         </a>
     </div>
@@ -36,8 +36,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
 
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Dashboard</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Household</a>
+    <a href="/public/homepage.html" class="w3-bar-item w3-button w3-padding-large">Dashboard</a>
+    <a href="/public/household.html" class="w3-bar-item w3-button w3-padding-large">Household</a>
     <a href="/public/profile.html" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
   </div>
 
@@ -128,9 +128,40 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
           <button id = "pay-bills" button type="button" style = "background-color: #0592cd; color: white; border-radius: 2px;" class="w3-button btn-primary w3-margin-bottom"><i class="fa fa-credit-card"></i>  Pay </button> 
             <!--The Modal for Pay Bill -->
           <div id = "payModal" class = "modal">
-
+            <!--Modal Content-->
+            <div class = "pay-content">
+              <span class = "close2">&times;</span>
+              <!--Checkbox to pay / Pull data from database-->
+              <table class = "bills-table">
+                <tr>
+                  <th>Bills</th>
+                  <th>Amount ($)</th>
+                  <th> To Pay </th>
+                </tr>
+                <tr>
+                  <td> PG & E </td>
+                  <td> 100 </td>
+                  <td><input type = "checkbox"></td>
+                </tr>
+                <tr>
+                  <td> Grocery </td>
+                  <td> 25 </td>
+                  <td><input type = "checkbox"></td>
+                </tr>
+                <tr>
+                  <td> Mcdonald's </td>
+                  <td> 6 </td>
+                  <td><input type = "checkbox"></td>
+                </tr>
+                <tr>
+                  <td> BBQ </td>
+                  <td> 25 </td>
+                  <td><input type = "checkbox"></td>
+                </tr>
+              </table>
+              <a href = "https://www.paypal.com/signin" target="_blank" rel="noopener noreferrer" class = "inPay" ><i class="fa fa-credit-card"></i>  Pay </a>
+            </div>
           </div>
-
         </div>
 
         <!-- End Middle Column -->
@@ -146,7 +177,18 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
           </div>
         </div>
         <br>
+        <!-- End Right Column -->
+      </div>
 
+      <div class="w3-col m2">
+        <div class="w3-card w3-round w3-white w3-center">
+          <div class="w3-container">
+            <a href = "https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
+              <img src="/img/paypal.jpg" alt="paypal" style="width:100%;">
+            </a>
+          </div>
+        </div>
+        <br>
         <!-- End Right Column -->
       </div>
 
@@ -195,14 +237,22 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
 
     //For modal pop up on manage bills and pay bills 
     var modal = document.getElementById("manageModal");
+    var modal2 = document.getElementById("payModal")
 
     var btn = document.getElementById("manage-modal");
+    var btn2 = document.getElementById("pay-bills"); 
 
     var span = document.getElementsByClassName("close")[0]; 
+    var span2 = document.getElementsByClassName("close2")[0]; 
 
     //Modal displayed when user click the button 
     btn.onclick = function(){
       modal.style.display = "block"; 
+    }
+
+    //Pay bill button 
+    btn2.onclick = function(){
+      modal2.style.display = "block";
     }
 
     //When user clicks on <span> (x), close the modal 
@@ -210,9 +260,19 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
       modal.style.display = "none";
     }
 
+    span2.onclick = function(){
+      modal2.style.display = "none";
+    }
+
     window.onclick = function(event){
       if(event.target == modal){
         modal.style.display = "none";
+      }
+    }
+
+    windows.onclick = function(event){
+      if(event.target == modal2){
+        modal2.style.display = "none"; 
       }
     }
 
