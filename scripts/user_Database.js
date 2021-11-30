@@ -1,40 +1,52 @@
-import { getFirestore, collection, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore, collection, doc, setDoc, getDoc, addDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from '../scripts/initApp.js'
 
 var db = getFirestore(app);
 
 const varDoc = collection(db, "User_database");
-var docName = "79fBCYsnORWzu528pPAX";
-
+const auth = getAuth();
+const user = auth.currentUser;
 //Questionare calling the setter functions
-document.getElementById('submitButton').addEventListener('click', (e) => {
+document.querySelectorAll("#joinHouse, #createHouse").forEach((ele) => {
+    ele.addEventListener('click', (e) => {
     e.preventDefault();
     var inUserName = document.getElementById('usernameInput').value;
-    var inEmail = document.getElementById('emailInput').value;
     var inPhoneNumber = document.getElementById('phoneNumberInput').value;
-    set_userName(db, docName, inUserName);
-    set_emailAddress(db, docName, inEmail);
-    set_phoneNumber(db, docName, inPhoneNumber);
-})
+
+    newUser(inUserName, inPhoneNumber);
+},{once : true})
+});
+
+
+async function newUser(userIn, phoneIn){
+    const user = getAuth().currentUser;
+    const newUserDoc = await setDoc(doc(varDoc, user.uid), {
+        userName: userIn,
+        phoneNumber: phoneIn,
+        userID: user.uid,
+        email: user.email
+    });
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
-async function set_userName(db, docInput, fieldInput){
-    await setDoc(doc(varDoc, docInput), { 
+async function set_userName(dbInput, docInput, fieldInput){
+    await setDoc(doc(dbInput, docInput), { 
     userName : fieldInput,
     },
     {merge: true});
 }
 
-async function set_emailAddress(db, docInput1, fieldInput1){
-    await setDoc(doc(varDoc, docInput1), { 
-    emailAddress : fieldInput1,
+async function set_phoneNumber(dbInput1, docInput1, fieldInput1){
+    await setDoc(doc(dbInput1, docInput1), { 
+    phoneNumber : fieldInput1,
     },
     {merge: true});
 }
 
-async function set_phoneNumber(db, docInput2, fieldInput2){
-    await setDoc(doc(varDoc, docInput2), { 
-    phoneNumber : fieldInput2,
+export async function set_houseId(dbInput2, docInput2, fieldInput2){
+    await setDoc(doc(dbInput2, docInput2), { 
+    houseId : fieldInput2,
     },
     {merge: true});
 }
