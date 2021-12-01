@@ -51,7 +51,6 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
             c++;
         }
     }
-    window.location.href='homepage.html';
     newHouse(inHname, inHsize, houseBool, inNoRoom, inUserName);
     
 })
