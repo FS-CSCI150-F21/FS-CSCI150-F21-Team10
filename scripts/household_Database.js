@@ -53,7 +53,6 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
     }
     
     newHouse(inHname, inHsize, houseBool, inNoRoom, inUserName); 
-
 })
 
 //join household event listener
@@ -73,7 +72,6 @@ async function findHouse(searchID, newRumii) {
         qSnapshot.forEach((currentDoc) => {
             var rumiiArray = currentDoc.data().rumiis;
             rumiiArray.push(newRumii)
-            console.log(rumiiArray);
             //sends new array to householdDB
             setDoc(doc(varDoc, currentDoc.id), {
                 rumiis: rumiiArray
@@ -126,14 +124,15 @@ async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
 }
 
 async function makeBills(bamt, bavg, bname, hid){
-
      for(let i = 0; i < bname.length; i++ ){
-         if(bname[i]!=null){
-          await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
-             amount : parseInt(bamt[i]),
-             billPer : bavg
-             // due : dueDateArr[i]
-          });
+        var amm = parseInt(bamt[i]);
+        if(bname[i]!=null){
+            await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
+                amount : amm,
+                billPer : bavg
+                // due : dueDateArr[i]
+            }
+          );
         }
          }
           //insert for loop when custom billPer  is implemented
@@ -172,7 +171,15 @@ async function set_htype(dbInput3, docInput3, boolHouse){
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// async function get_hname(db){
-//     const printThis = getDoc(doc(varDoc, "79fBCYsnORWzu528pPAX"));
-//     console.log(printThis.data());
-// }
+export async function get_billDue(inputDB, inputHID, inputBillType){
+    //InputDB = db //inputHID = householdID //inputBillType = rent,gas,water, etc. 
+    const currentBill = await getDoc(doc(inputDB, "Household_database", inputHID, "Bills", inputBillType));
+    var billPercent = currentBill.data().billPer / 100;
+    return (billPercent * currentBill.data().amount)
+}
+// example of how to call this function, result is equal to how much it costs for that bill
+// let token = get_billDue(db, "mTA7ApaDvrj7sSHF60uT", "Electric");
+//     console.log(token)
+//     token.then(function(result) {
+//         console.log(result);
+//     });
