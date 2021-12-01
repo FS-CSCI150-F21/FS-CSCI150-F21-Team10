@@ -22,6 +22,7 @@ onAuthStateChanged(auth, (user) => {
 async function lookupUser(uid){
   const docRef = doc(db, "User_database", uid);
   const docSnap = await getDoc(docRef);
+  console.log(docSnap.userName);
 
   if (docSnap.exists()) {
       document.getElementById('usernameID').innerHTML = 
@@ -29,7 +30,7 @@ async function lookupUser(uid){
       document.getElementById('emailID').innerHTML = 
       docSnap.data().email;
       document.getElementById('phoneID').innerHTML = 
-      docSnap.data().phone;
+      docSnap.data().phoneNumber;
       // query house name in houseDB with houseID
       var hID = docSnap.data().houseID;
       queryHname(db, hID);
