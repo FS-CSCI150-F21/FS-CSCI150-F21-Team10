@@ -76,10 +76,13 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
           <h4>Manage Bills</h4>
           <hr class="w3-clear">
-          <table class = "bills-table">
-            
+          <table class = "display-bills-table">
+            <tr>
+              <th>Title</th>
+              <th>Amount ($)</th>
+            </tr>
+            <td><ul id="billPreview"></ul></td>
           </table>
-          <ul id="billPreview"></ul>
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-half">
             </div>

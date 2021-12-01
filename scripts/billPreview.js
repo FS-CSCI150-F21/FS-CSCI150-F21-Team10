@@ -25,7 +25,7 @@ async function get_billDue(db,uid){
    const querySnapshot = await getDocs(collection(db, 'Household_database',hID, "Bills"));
    querySnapshot.forEach((doc) => {
         var node = document.createElement("LI");                 
-        var bill = document.createTextNode(`${doc.id} :\t ${doc.data().amount}`);         
+        var bill = document.createTextNode(`${doc.id}   \t :  $\t ${doc.data().amount}`);         
         node.appendChild(bill);                          
         document.getElementById("billPreview").appendChild(node);    
    })

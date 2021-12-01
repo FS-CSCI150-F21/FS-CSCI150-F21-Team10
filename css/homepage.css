@@ -2,6 +2,9 @@
     color:#0592cd;
 }
 
+.display-bills-table{
+    margin: 30px;
+}
 
 .modal{
     display: none; 
