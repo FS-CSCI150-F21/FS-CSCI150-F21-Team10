@@ -1,23 +1,31 @@
 import { getFirestore, collection, doc, setDoc, getDoc, addDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from '../scripts/initApp.js'
 
 var db = getFirestore(app);
 
 const varDoc = collection(db, "User_database");
-
+const auth = getAuth();
+const user = auth.currentUser;
 //Questionare calling the setter functions
-document.getElementById('submitButton').addEventListener('click', (e) => {
+document.querySelectorAll("#joinHouse, #createHouse").forEach((ele) => {
+    ele.addEventListener('click', (e) => {
     e.preventDefault();
     var inUserName = document.getElementById('usernameInput').value;
     var inPhoneNumber = document.getElementById('phoneNumberInput').value;
 
     newUser(inUserName, inPhoneNumber);
-})
+},{once : true})
+});
 
-async function newUser(input1,input2){
-    const newHouseDoc = await addDoc(varDoc, {
-        userName: input1,
-        phoneNumber: input2,
+
+async function newUser(userIn, phoneIn){
+    const user = getAuth().currentUser;
+    const newUserDoc = await setDoc(doc(varDoc, user.uid), {
+        userName: userIn,
+        phoneNumber: phoneIn,
+        userID: user.uid,
+        email: user.email
     });
 }
 

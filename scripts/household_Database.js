@@ -1,11 +1,11 @@
-import { getFirestore, collection, doc, setDoc, getDoc,updateDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
-//import {set_houseId} from '/scripts/user_Database.js'
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, addDoc, query, where} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from './initApp.js'
 
 var db = getFirestore(app);
 
 const varDoc = collection(db, "Household_database");
-const varDoc2 = collection(db, "user_database");
+const varDoc2 = collection(db, "User_database");
 
 var billNames = [];
 var billAmounts = [];
@@ -14,17 +14,21 @@ billNames.length = 6;
 var b = 0;
 var c = 0;
 
-//Questionare calling the setter functions
-
+//Create Household event listener
 document.getElementById('Qsub').addEventListener('click', (e) => {
     e.preventDefault();
 
     var inHname = document.getElementById('houseName').value;
     var inHsize = parseInt(document.getElementById('numInHouse').value);
-    var inApt = parseInt(document.getElementById('house').value);
     var inNoRoom = parseInt(document.getElementById('numBedrooms').value);
     var inUserName = document.getElementById('usernameInput').value;
-    //var inHouse = document.getElementById('apt').value;
+    var inHouse = document.getElementById('house');
+    var houseBool = 1;
+    if (inHouse.checked == true){
+        houseBool = 1;
+    } else{
+        houseBool = 0;
+    }
 
     
    
@@ -47,20 +51,54 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
             c++;
         }
     }
-      
-    newHouse(inHname, inHsize, inApt, inNoRoom, inUserName); 
-
+    
+    newHouse(inHname, inHsize, houseBool, inNoRoom, inUserName); 
 })
 
+//join household event listener
+document.getElementById('Qsub2').addEventListener('click', (e) => {
+    e.preventDefault();
+    var houseJoinIn = document.getElementById('houseNameJoin').value;
+    var addRumii = document.getElementById('usernameInput').value;
+    findHouse(houseJoinIn, addRumii);
+})
+
+//finds the house name and adds the user to the house
+async function findHouse(searchID, newRumii) {
+    const user = getAuth().currentUser;
+	const q = query(varDoc, where("hName", "==", searchID));
+    const qSnapshot = await getDocs(q);
+    if(!(qSnapshot.empty)){
+        qSnapshot.forEach((currentDoc) => {
+            var rumiiArray = currentDoc.data().rumiis;
+            rumiiArray.push(newRumii)
+            //sends new array to householdDB
+            setDoc(doc(varDoc, currentDoc.id), {
+                rumiis: rumiiArray
+            },
+            {merge: true});
+            //sends houseID to userDB to link them together
+            setDoc(doc(varDoc2, user.uid), {
+                houseID: currentDoc.data().houseID
+            },
+            {merge: true});
+        });
+    }
+    else{
+        console.log("Could not find house");
+    }
+}
+
 //creates a new document in household_database
-async function newHouse(input1,input2,input3,input4,input5){
-    var billAvg = 100/input2;
+async function newHouse(hNameIn,hSizeIn,hTypeIn,noRoomIn,rumiiIN){
+    var billAvg = 100/hSizeIn;
+    const user = getAuth().currentUser;
     const newHouseDoc = await addDoc(varDoc, {
-        hName: input1,
-        hSize: input2,
-        hType: input3,
-        noRoom: input4,
-        rumiis: [input5],
+        hName: hNameIn,
+        hSize: hSizeIn,
+        hType: hTypeIn,
+        noRoom: noRoomIn,
+        rumiis: [rumiiIN],
     })
 
     .then(function(docRef) {
@@ -71,18 +109,15 @@ async function newHouse(input1,input2,input3,input4,input5){
             houseID: docRef.id
         },
         {merge: true});
-        
-        // adds the houseID into the user doc, not done yet
-        // setDoc(doc(varDoc2, getAuth()), {
-        //     houseID: docRef.id
-        // },
-        // {merge: true});
+        //adds the houseID to the Userdatabase to connect the two
+        const newUserDoc = setDoc(doc(varDoc2, user.uid), {
+            houseID: docRef.id
+        },
+        {merge: true});
     })
     .catch(function(error){
         console.error("error: ", error);
     });
-
-
 }
 
 async function makeBills(bamt, bavg, bname, hid){
@@ -117,6 +152,7 @@ async function set_hsize(dbInput1, docInput1, fieldInput1){
 
 
 async function set_noroom(dbInput2, docInput2, fieldInput2){
+    //apt = 0, house = 1
     await setDoc(doc(dbInput2, docInput2), {
         noRoom : fieldInput2
     },
@@ -124,15 +160,23 @@ async function set_noroom(dbInput2, docInput2, fieldInput2){
 }
 
 
-async function set_htype(dbInput3, docInput3, boolApt, boolHouse){
+async function set_htype(dbInput3, docInput3, boolHouse){
     await setDoc(doc(dbInput3, docInput3), {
-        hType : inApt
+        hType : boolHouse
     },
     {merge: true});
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// async function get_hname(db){
-//     const printThis = getDoc(doc(varDoc, "79fBCYsnORWzu528pPAX"));
-//     console.log(printThis.data());
-// }
+export async function get_billDue(inputDB, inputHID, inputBillType){
+    //InputDB = db //inputHID = householdID //inputBillType = rent,gas,water, etc. 
+    const currentBill = await getDoc(doc(inputDB, "Household_database", inputHID, "Bills", inputBillType));
+    var billPercent = currentBill.data().billPer / 100;
+    return (billPercent * currentBill.data().amount)
+}
+// example of how to call this function, result is equal to how much it costs for that bill
+// let token = get_billDue(db, "mTA7ApaDvrj7sSHF60uT", "Electric");
+//     console.log(token)
+//     token.then(function(result) {
+//         console.log(result);
+//     });
