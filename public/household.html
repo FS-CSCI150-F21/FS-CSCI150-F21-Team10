@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <title> RUMII - Questionnaire </title>
-  <link rel = "icon" href="./img/icon.png">
+  <link rel = "icon" href="/img/icon.png">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,9 +20,7 @@
     <link rel="stylesheet" href="/css/household.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-<script>
 
-</script>
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -38,15 +36,31 @@
   <form>
     <div class="container card form-group" >
         <div class="row card-body">
+            <div class = "col-md-8">
+            <h2>Household</h1>
 
-            <div class ="col-md-8"> 
-                <div class = "addMember"> 
-                     <h2>Housemembers</h2>
-                    <button type = "button" class =" addMember btn btn-primary"> Add Member </button>
-                </div>
-            </div>
-
-
+    <ul>
+                <!--User-->
+    <li style = "list-style: none; margin-bottom: 5px;">
+      <div class = "con">
+        <div class = "con1">
+          <img src ="/img/head.jpg" class = "userimg">
+            <div class = "innercon"></div>
+         </div>  
+         <div class= "sidebox" style = "text-align: center;">
+          <span class = "spanstyle">
+            <a><b> Username</b></a>
+          </span> <br>
+          <a href = "#" title="delMember" style = "float: right; color:red;"><i class ="fa fa-trash fa-lg"></i></a>
+          <span class = "spanstyle2">
+            mail@gmail.com
+          </span>
+         </div>
+    </div>
+  </li>
+  </ul>
+  <button type="button" class=" addMember btn btn-primary" style = "margin: 10px 0px;"> Add Member </button>
+</div>
             <div class = "col-md-4 justify-content-around">
                 <div class = "col setRemind">
                     <h2 style = "margin-right: 10px;">Rumii Reminders</h2>
