@@ -50,5 +50,3 @@ async function redirect(uid) {
 };
 
 
-
-
