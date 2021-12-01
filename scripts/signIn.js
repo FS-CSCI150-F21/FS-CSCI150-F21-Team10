@@ -37,7 +37,10 @@ function GoogleLogin() {
 async function redirect(uid) {
   const qResult = doc(db, "User_database",uid);
   const Snapshot = await getDoc(qResult);
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd188367f36fe36ef0162fa045aaa9d89b2ed263
     if(Snapshot.exists()){
       window.location = 'homepage.html';
     }
