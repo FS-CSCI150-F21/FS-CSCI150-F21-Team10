@@ -46,5 +46,3 @@ async function redirect(uid) {
 };
 
 
-
-

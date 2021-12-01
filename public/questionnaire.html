@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <title> RUMII - Questionnaire </title>
-  <link rel = "icon" href="./img/icon.png">
-  <head>
+<title> RUMII - Questionnaire </title>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,9 +16,13 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css">
-    <script type="module" src="/scripts/household_Database.js"></script>
-    <script type="module" src="/scripts/user_Database.js"></script>
-  </head>
+
+    <!--Scripts to input data into firebase-->
+    <script type = "module" src ="/scripts/household_Database.js"></script>
+    <script type = "module" src ="/scripts/user_Database.js"></script>
+
+
+</head>
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -84,8 +87,8 @@
 
     <!-- Fifth Question: Text Number -->
     <div class="form-group">
-      <label for="numInHouse">6. Number of members in your household?</label>
-      <input type="number" class="form-control" id="numInHouse" min="0" required>
+      <label for="numInHouse">5. Number of members in your household?</label>
+      <input type="number" class="form-control" id="numInHouse" min="0">
     </div>
 
     <!-- sicth Question: Multiple Choice -->
@@ -106,18 +109,18 @@
 
     <!-- Seventh Question: Text Number -->
     <div class="form-group">
-      <label for="numBedrooms">8. How many bedrooms are in your household?</label>
+      <label for="numBedrooms">7. How many bedrooms are in your household?</label>
       <input type="number" class="form-control" id="numBedrooms" min="0" required>
     </div>
 
     <!-- Eight Question: Check boxes-->
     <label for="rentBill electricBill gasBill waterBill garbageBill internetBill">8. What bills are needed for this household?</label>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="Rent" id="rentBill" />
+      <input class="form-check-input" type="checkbox" value="Rent" id="rentBill" required>
       <label class="form-check-label" for="rentBill">
         Rent
       </label>
-         <input type="number" placeholder="Bill Amount" id="rentAmount" name="rentAmount" />
+         <input type="number" placeholder="Bill Amount" id="rentAmount" name="rentAmount"/>
     </div>
 
     <div class="form-check">
@@ -125,7 +128,7 @@
       <label class="form-check-label" for="electricBill">
         Electric
       </label>
-         <input type="number" placeholder="Bill Amount" id="electAmount" name="electAmount" />
+         <input type="number" placeholder="Bill Amount" id="electAmount" name="electAmount"/>
     </div>
 
     <div class="form-check">
@@ -133,7 +136,7 @@
       <label class="form-check-label" for="gasBill">
         Gas
       </label>
-         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount" />
+         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount">
     </div>
 
     <div class="form-check">
@@ -141,7 +144,7 @@
       <label class="form-check-label" for="waterBill">
         Water
       </label>
-         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount" />
+         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount">
     </div>
 
     <div class="form-check">
@@ -149,7 +152,7 @@
       <label class="form-check-label" for="garbageBill">
         Garbage
       </label>
-         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount" />
+         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount">
     </div>
 
     <div class="form-check">
@@ -157,25 +160,27 @@
       <label class="form-check-label" for="internetBill">
         Internet
       </label>
-         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount" />
+         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
     </div>
     
+
   <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" id="Qsub">
+    <input type="submit" value="Submit" class= "btn btn-secondary" id= "Qsub">
+
   </div>
 
   <div id = "ifJoin" style = "display:none">
     <div class="form-group" >
     <label for="houseNameJoin">4. Name of household joining?</label>
-    <input type="text" class="form-control" id="houseNameJoin" required>
+    <input type="text" class="form-control" id="houseNameJoin">
 
     <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" id="Qsub2" >
+    <input type="submit" value="Submit" class= "btn btn-secondary" id = "Qsub2">
   </div>
 
   </form>
 </div>
-  <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
     <script src="/scripts/popper.min.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/main.js"></script>
