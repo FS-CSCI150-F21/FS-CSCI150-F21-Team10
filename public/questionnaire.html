@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
-  <title> RUMII - Questionnaire </title>
-  <link rel = "icon" href="./img/icon.png">
-  <head>
+<title> RUMII - Questionnaire </title>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="/img/icon.png">
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
 
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
@@ -17,7 +16,13 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css">
-  </head>
+
+    <!--Scripts to input data into firebase-->
+    <script type = "module" src ="/scripts/household_Database.js"></script>
+    <script type = "module" src ="/scripts/user_Database.js"></script>
+
+
+</head>
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -33,7 +38,7 @@
     <!-- One Question: text -->
       <div class="form-group">
         <label for="usernameInput">1. Enter Username</label>
-        <input type="text" class="form-control" id="usernameInput">
+        <input type="text" class="form-control" id="usernameInput" required>
       </div>
 
     <!-- Second Question: Number text -->
@@ -77,12 +82,12 @@
     <div id = "ifCreate" style = "display:none">
     <div class="form-group" >
       <label for="houseName">4. What is your house name?</label>
-      <input type="text" class="form-control" id="houseName">
+      <input type="text" class="form-control" id="houseName" required>
     </div>
 
     <!-- Fifth Question: Text Number -->
     <div class="form-group">
-      <label for="numInHouse">6. Number of members in your household?</label>
+      <label for="numInHouse">5. Number of members in your household?</label>
       <input type="number" class="form-control" id="numInHouse" min="0">
     </div>
 
@@ -104,14 +109,14 @@
 
     <!-- Seventh Question: Text Number -->
     <div class="form-group">
-      <label for="numBedrooms">8. How many bedrooms are in your household?</label>
-      <input type="number" class="form-control" id="numBedrooms" min="0">
+      <label for="numBedrooms">7. How many bedrooms are in your household?</label>
+      <input type="number" class="form-control" id="numBedrooms" min="0" required>
     </div>
 
     <!-- Eight Question: Check boxes-->
     <label for="rentBill electricBill gasBill waterBill garbageBill internetBill">8. What bills are needed for this household?</label>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="rentBill" />
+      <input class="form-check-input" type="checkbox" value="Rent" id="rentBill" required>
       <label class="form-check-label" for="rentBill">
         Rent
       </label>
@@ -119,7 +124,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="electricBill" />
+      <input class="form-check-input" type="checkbox" value="Electric" id="electricBill" />
       <label class="form-check-label" for="electricBill">
         Electric
       </label>
@@ -127,7 +132,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="gasBill" />
+      <input class="form-check-input" type="checkbox" value="Gas" id="gasBill" />
       <label class="form-check-label" for="gasBill">
         Gas
       </label>
@@ -135,7 +140,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="waterBill" />
+      <input class="form-check-input" type="checkbox" value="Water" id="waterBill" />
       <label class="form-check-label" for="waterBill">
         Water
       </label>
@@ -143,7 +148,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="garbageBill" />
+      <input class="form-check-input" type="checkbox" value="Garbage" id="garbageBill" />
       <label class="form-check-label" for="garbageBill">
         Garbage
       </label>
@@ -151,7 +156,7 @@
     </div>
 
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="internetBill" />
+      <input class="form-check-input" type="checkbox" value="Internet" id="internetBill" />
       <label class="form-check-label" for="internetBill">
         Internet
       </label>
@@ -160,7 +165,7 @@
     
 
   <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" id= "submitButton">
+    <input type="submit" value="Submit" class= "btn btn-secondary" id= "Qsub">
 
   </div>
 
@@ -170,7 +175,7 @@
     <input type="text" class="form-control" id="houseNameJoin">
 
     <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary">
+    <input type="submit" value="Submit" class= "btn btn-secondary" id = "Qsub2">
   </div>
 
   </form>

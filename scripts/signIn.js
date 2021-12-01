@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore,doc,getDoc } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import app from './initApp.js'
 
 var db = getFirestore(app);
@@ -20,6 +20,7 @@ function GoogleLogin() {
       const token = credential.accessToken;
       //display user info after successful login
       const user = result.user;
+      redirect(user.uid);
 
     }).catch((error) => {
       const errorCode = error.code;
@@ -32,10 +33,16 @@ function GoogleLogin() {
     });
 }
 
-//After successful login, user will be redirected to home.html
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location = 'questionnaire.html';
-  }
-});
+// Redirect user after userDB check
+async function redirect(uid) {
+  const qResult = doc(db, "User_database",uid);
+  const Snapshot = await getDoc(qResult);
+    if(Snapshot.exists()){
+      window.location = 'homepage.html';
+    }
+    else{
+      window.location = 'questionnaire.html';;
+    }
+};
+
 

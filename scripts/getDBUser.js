@@ -29,13 +29,12 @@ async function lookupUser(uid){
       document.getElementById('emailID').innerHTML = 
       docSnap.data().email;
       document.getElementById('phoneID').innerHTML = 
-      docSnap.data().phone;
+      docSnap.data().phoneNumber;
       // query house name in houseDB with houseID
       var hID = docSnap.data().houseID;
-      queryHname(db, hID );
+      queryHname(db, hID);
      
   } else {
-    // doc.data() will be undefined in this case
     console.log("user not found");
   }
 }
