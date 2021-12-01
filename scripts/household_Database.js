@@ -85,7 +85,7 @@ async function findHouse(searchID, newRumii) {
             {merge: true});
         });
         console.log("send to page")
-        window.location = 'homepage.html';
+        window.location.href = 'homepage.html';
     }
     else{
         document.getElementById('searchResult').innerHTML = "Could not find house"
