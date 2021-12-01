@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 import app from './initApp.js'
 
@@ -18,11 +18,8 @@ function GoogleLogin() {
       //Google Access Token. use it to access Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-
       //display user info after successful login
       const user = result.user;
-      console.log(result.user)
-      showUserDetails(result.user)
 
     }).catch((error) => {
       const errorCode = error.code;
