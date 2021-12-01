@@ -1,4 +1,4 @@
-import { getFirestore, collection, doc, setDoc, getDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
+import { getFirestore, collection, doc, setDoc, getDoc,updateDoc, addDoc} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
 //import {set_houseId} from '/scripts/user_Database.js'
 import app from './initApp.js'
 
@@ -86,14 +86,15 @@ async function newHouse(input1,input2,input3,input4,input5){
 }
 
 async function makeBills(bamt, bavg, bname, hid){
-
      for(let i = 0; i < bname.length; i++ ){
-         if(bname[i]!=null){
-          await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
-             amount : parseInt(bamt[i]),
-             billPer : bavg
-             // due : dueDateArr[i]
-          });
+        var amm = parseInt(bamt[i]);
+        if(bname[i]!=null){
+            await setDoc(doc(db, "Household_database", hid, "Bills", bname[i]), {
+                amount : amm,
+                billPer : bavg
+                // due : dueDateArr[i]
+            }
+          );
         }
          }
           //insert for loop when custom billPer  is implemented
