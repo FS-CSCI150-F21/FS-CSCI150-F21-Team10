@@ -22,6 +22,7 @@ onAuthStateChanged(auth, (user) => {
 async function lookupUser(uid){
   const docRef = doc(db, "User_database", uid);
   const docSnap = await getDoc(docRef);
+  console.log(docSnap.userName);
 
   if (docSnap.exists()) {
       document.getElementById('usernameID').innerHTML = 
