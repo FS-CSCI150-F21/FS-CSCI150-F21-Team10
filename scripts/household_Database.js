@@ -83,8 +83,11 @@ async function findHouse(searchID, newRumii) {
             },
             {merge: true});
         });
+        console.log("send to page")
+        window.location = 'homepage.html';
     }
     else{
+        document.getElementById('searchResult').innerHTML = "Could not find house"
         console.log("Could not find house");
     }
 }
