@@ -49,7 +49,6 @@ document.getElementById('Qsub').addEventListener('click', (e) => {
             c++;
         }
     }
-    
     newHouse(inHname, inHsize, houseBool, inNoRoom, inUserName); //function to make a new house
 })
 
@@ -82,7 +81,8 @@ async function findHouse(searchID, newRumii) {
             {merge: true});
         });
         console.log("send to page")
-        window.location = 'homepage.html';
+        window.location.href = 'homepage.html';
+
     }
     else{
         document.getElementById('searchResult').innerHTML = "Could not find house"
@@ -133,7 +133,7 @@ async function makeBills(bamt, bavg, bname, hid){
           );
         }
          }
-          //insert for loop when custom billPer  is implemented
+    window.location.href="homepage.html"; 
  }
 
 /////////////////////////////////////////////////////////
