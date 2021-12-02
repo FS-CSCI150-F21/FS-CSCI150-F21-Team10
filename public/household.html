@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/household.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+       <!-- Scripts -->
+   <script type="module" src="/scripts/getRumiisArr.js"></script>
+   <script type="module" src="/scripts/deleteUser.js"></script>
   </head>
 
-   <!-- Scripts -->
-   <script type="module" src="/scripts/getRumiisArr.js"></script>
 
 <body>
   <div class="banner">
@@ -43,8 +45,6 @@
             <div class = "col-md-8">
             <h2>Household</h1>
 
-    
-
     <ul id = "rumiisID">
     <!--User-->
     <li style = "list-style: none; margin-bottom: 5px;">
@@ -57,7 +57,7 @@
           <span class = "spanstyle">
             <a><b> Username</b></a>
           </span> <br>
-          <a href = "#" title="delMember" style = "float: right; color:red;"><i class ="fa fa-trash fa-lg"></i></a>
+          <a href = "#" title="delMember" style = "float: right; color:red;"><i class ="fa fa-trash fa-lg" id="delButton"></i></a>
           <span class = "spanstyle2">
             mail@gmail.com
           </span>
