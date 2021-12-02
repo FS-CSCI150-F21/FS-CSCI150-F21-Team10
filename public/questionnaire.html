@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <title> RUMII - Questionnaire </title>
-  <link rel = "icon" href="./img/icon.png">
-  <head>
+<title> RUMII - Questionnaire </title>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,9 +16,13 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css">
-    <script type="module" src="/scripts/household_Database.js"></script>
-    <script type="module" src="/scripts/user_Database.js"></script>
-  </head>
+
+    <!--Scripts to input data into firebase-->
+    <script type = "module" src ="/scripts/household_Database.js"></script>
+    <script type = "module" src ="/scripts/user_Database.js"></script>
+
+
+</head>
 <body>
     <div class="banner">
         <div class="banner-Contents">
@@ -28,8 +31,9 @@
     </div>
 
   <h2 id = "quesTitle">Questionnaire</h2>
-
-<div class="row col-5">
+<div class="container">
+<div class="row">
+<div class="col-6">
   <h4 class="fw-bold text-center mt-3"></h4>
   <form class=" bg-white px-4" action="homepage.html">
     <!-- One Question: text -->
@@ -85,7 +89,7 @@
     <!-- Fifth Question: Text Number -->
     <div class="form-group">
       <label for="numInHouse">5. Number of members in your household?</label>
-      <input type="number" class="form-control" id="numInHouse" min="0" required>
+      <input type="number" class="form-control" id="numInHouse" min="0">
     </div>
 
     <!-- sicth Question: Multiple Choice -->
@@ -117,7 +121,7 @@
       <label class="form-check-label" for="rentBill">
         Rent
       </label>
-         <input type="number" placeholder="Bill Amount" id="rentAmount" name="rentAmount" />
+         <input type="number" placeholder="Bill Amount" id="rentAmount" name="rentAmount"/>
     </div>
 
     <div class="form-check">
@@ -125,7 +129,7 @@
       <label class="form-check-label" for="electricBill">
         Electric
       </label>
-         <input type="number" placeholder="Bill Amount" id="electAmount" name="electAmount" />
+         <input type="number" placeholder="Bill Amount" id="electAmount" name="electAmount"/>
     </div>
 
     <div class="form-check">
@@ -133,7 +137,7 @@
       <label class="form-check-label" for="gasBill">
         Gas
       </label>
-         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount" />
+         <input type="number" placeholder="Bill Amount" id="gasAmount" name="gasAmount">
     </div>
 
     <div class="form-check">
@@ -141,7 +145,7 @@
       <label class="form-check-label" for="waterBill">
         Water
       </label>
-         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount" />
+         <input type="number" placeholder="Bill Amount" id="waterAmount" name="waterAmount">
     </div>
 
     <div class="form-check">
@@ -149,7 +153,7 @@
       <label class="form-check-label" for="garbageBill">
         Garbage
       </label>
-         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount" />
+         <input type="number" placeholder="Bill Amount" id="garbAmount" name="garbAmount">
     </div>
 
     <div class="form-check">
@@ -157,27 +161,35 @@
       <label class="form-check-label" for="internetBill">
         Internet
       </label>
-         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount" />
+         <input type="number" placeholder="Bill Amount" id="intAmount" name="intAmount">
     </div>
     
 
   <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" id="Qsub">
+    <input type="submit" value="Create House" class= "btn btn-secondary" id= "Qsub">
 
   </div>
 
   <div id = "ifJoin" style = "display:none">
     <div class="form-group" >
-    <label for="houseNameJoin">4. Name of household joining?</label>
-    <input type="text" class="form-control" id="houseNameJoin" required>
+    <label for="houseNameJoin">4. Name of household joining</label>
+    ?<div id="searchResult" style="font-size: small"></div>
+    <input type="text" class="form-control" id="houseNameJoin">
 
     <!-- Submits to homepage -->
-    <input type="submit" value="Submit" class= "btn btn-secondary" id="Qsub2" >
+    <input type="submit" value="Join House" class= "btn btn-secondary" id = "Qsub2">
   </div>
 
   </form>
 </div>
-  <script src="/scripts/jquery-3.3.1.min.js"></script>
+</div>
+<div class="col-6"> 
+  <img src="/img/question.png" alt ="computer with checks">
+</div>
+
+</div>
+
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
     <script src="/scripts/popper.min.js"></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/main.js"></script>

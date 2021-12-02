@@ -1,7 +1,8 @@
 .card
 {
-    margin-left: 150px;
-    margin-right: 200px;
+
+    margin-left: 200px;
+    margin-right: 350px;
 }
 .setRemind
 {
@@ -14,4 +15,75 @@
     text-align: right;
     padding: 10px 0px;
     float: right;
+}
+
+.con
+{
+  display: inline-flex;
+  padding: 5px;
+  background-color: #f8f8f8;
+  padding-left: 20px;
+  width: 500px;
+  border-radius: 3%;
+  
+}
+
+.con1
+{
+width:80px;
+height:80px;
+background-color: pink;
+border-radius: 50%;
+text-align:center;
+border: 2px solid #0592cd;
+display:inline-flex;
+}
+
+.con:hover:nth-child(1)
+{
+box-shadow:10px 10px 10px #f8f8f84d;
+margin-left:15px; 
+}
+
+.userimg
+{
+  width: 100%;
+  height:100%;
+  border-radius: 50%;
+}
+
+.innercon
+{
+width: 10px;
+height: 10px;
+background-color: #0592cd;
+margin-top: 72px;
+margin-left: -20px;
+border-radius: 50%;
+}
+.sidebox{
+margin-top:-5px;
+display: inline-block;
+padding-top:15 px;
+width: 250px;
+}
+
+.spanstyle
+{
+  text-align:left;
+  font-size: 18px;
+  font-weight:1;
+  text-align:left;
+  margin-left:-122px;
+  font-family:"Roboto", sans-serif;
+}
+
+.spanstyle2
+{
+  font-size: 15px;
+  margin-left:12px;
+  float: left;
+  margin-top: 10px;
+  color: black;
+  font-family:"Roboto", sans-serif;
 }
