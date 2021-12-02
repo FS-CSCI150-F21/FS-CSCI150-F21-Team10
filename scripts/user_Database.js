@@ -4,9 +4,10 @@ import app from '../scripts/initApp.js'
 
 var db = getFirestore(app);
 
-const varDoc = collection(db, "User_database");
+const varDoc = collection(db, "User_database");  //save path to user database
 const auth = getAuth();
 const user = auth.currentUser;
+
 //Questionare calling the setter functions
 document.querySelectorAll("#joinHouse, #createHouse").forEach((ele) => {
     ele.addEventListener('click', (e) => {
@@ -18,8 +19,7 @@ document.querySelectorAll("#joinHouse, #createHouse").forEach((ele) => {
 },{once : true})
 });
 
-
-async function newUser(userIn, phoneIn){
+async function newUser(userIn, phoneIn){  //creates a new user to the user database
     const user = getAuth().currentUser;
     const newUserDoc = await setDoc(doc(varDoc, user.uid), {
         userName: userIn,
@@ -29,7 +29,9 @@ async function newUser(userIn, phoneIn){
     });
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
+//////// Setter functions//////////////////////////////////
+///////////////////////////////////////////////////////////
 async function set_userName(dbInput, docInput, fieldInput){
     await setDoc(doc(dbInput, docInput), { 
     userName : fieldInput,
@@ -57,3 +59,7 @@ export async function set_houseId(dbInput2, docInput2, fieldInput2){
 //     },
 //     {merge: true});
 // }
+
+/////////////////////////////////////////////////////////////////////
+//////// Getter function(s ?)////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
