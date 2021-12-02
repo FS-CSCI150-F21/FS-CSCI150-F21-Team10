@@ -76,7 +76,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
           <h4>Manage Bills</h4>
           <hr class="w3-clear">
-          <ul id="billPreview"></ul>
+          <ul id="billsID" style="list-style: none;" ></ul><ul id="billAmountsID"  style="list-style: none;"></ul>
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-half">
             </div>
@@ -116,14 +116,11 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Roboto", sans-serif;}
             </div>
           </div>
         </div>
-
+        
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
           <h4>Pay Bills</h4><br>
           <hr class="w3-clear">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.</p>
-
+          
           <button id = "pay-bills" button type="button" style = "background-color: #0592cd; color: white; border-radius: 2px;" class="w3-button btn-primary w3-margin-bottom"><i class="fa fa-credit-card"></i>  Pay </button> 
             <!--The Modal for Pay Bill -->
           <div id = "payModal" class = "modal">
