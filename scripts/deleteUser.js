@@ -1,34 +1,35 @@
 import { getFirestore, collection, doc, setDoc, getDoc, getDocs, query, where, deleteField} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js'
-import { getAuth,} from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js'
 import app from './initApp.js'
 
 var db = getFirestore(app);
 
-document.getElementById('someButtonEvanWillMake').addEventListener('click', (e) => {
-    e.preventDefault();
-
-    deleteUser();
+const auth = getAuth();
+document.getElementById('delButton').addEventListener('click', (e) => {
+    const userID = auth.currentUser.uid;
+    deleteUser(userID)
 });
 
-async function deleteUser(){
+async function deleteUser(userIDinput){
     const user = getAuth().currentUser;
-    const q = query(collection(db, "User_database"), where("userID", "==", user));
-    const qSnapshot = await getDocs(q);
-        qSnapshot.forEach((currentDoc) => {
-            var pulledHouseID = currentDoc.data().houseID;
-            const houseSnap = getDoc(doc(db,"Household_database",pulledHouseID));
-            var rumiiArr = houseSnap.data().rumiis
-            rumiiArr.pop();
-            setDoc(doc(db, "Household_database", pulledHouseID), {
+    const userRef = doc(db, "User_database", userIDinput);
+    const thisUserDoc = await getDoc(userRef);
+
+    const houseRef = doc(db, "Household_database", thisUserDoc.data().houseID);
+    const thisHouseDoc = await getDoc(houseRef);
+
+    console.log(thisHouseDoc.data().rumiis)
+    var rumiiArr = thisHouseDoc.data().rumiis
+    for (let i = 0; i < rumiiArr.length; i++){
+        if((thisUserDoc.data().userName) == (rumiiArr[i])){
+            rumiiArr.splice(i, 1);
+            
+            setDoc(houseRef, {
                 rumiis: rumiiArr
-            },
-            {merge: true});
-            setDoc(doc(db, "User_database", user), {
-                houseID: deleteField()
-            },
-            {merge: true});
-
-
-    });
-    
+            },{merge: true});
+            setDoc(userRef, {
+            houseID: deleteField()
+            },{merge: true});
+        }
+    }
 }
