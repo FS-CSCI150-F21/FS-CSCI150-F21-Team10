@@ -37,6 +37,20 @@ async function get_billDue(db, uid) {
     node.appendChild(bill);
     document.getElementById("billAmountsID").appendChild(node);
   })
+  
+  querySnapshot.forEach((doc) => {
+    var node = document.createElement("LI");
+    var bill = document.createTextNode(` ${doc.id}`);
+    node.appendChild(bill);
+    document.getElementById("billsID2").appendChild(node);
+  })
+
+  querySnapshot.forEach((doc) => {
+    var node = document.createElement("LI");
+    var bill = document.createTextNode(` ${doc.data().amount}`);
+    node.appendChild(bill);
+    document.getElementById("billsAmountsID2").appendChild(node);
+  })
 };
 
 

@@ -2,11 +2,87 @@
     color:#0592cd;
 }
 
+.display-bills-table{
+    font-size: 1.3em; 
+    font-family: sans-serif; 
+    min-width: 30rem; 
+    margin: 30px 0; 
+}
+
+.display-bills-table thead tr{
+    background-color: #009879;
+    color: #0592cd; 
+    text-align: left; 
+}
+
+.display-bills-table th{
+    padding-right: 20%;
+}
+
+.pay-bills-table{
+    font-size: 1.3em; 
+    font-family: sans-serif; 
+    min-width: 40rem; 
+    margin: 30px 0; 
+}
+
+.pay-bills-table thead tr{
+    background-color: #009879;
+    color: #0592cd; 
+    text-align: left; 
+}
+
+.pay-bills-table th{
+    padding-right: 20%;
+}
+
+label {
+    display: block;
+    padding-left: 35em;
+    text-indent: -1px;
+    padding-top: 5.4px;
+  }
+input {
+    width: 13px;
+    height: 20px;
+    padding: 0;
+    
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: 12.5rem;
+    *overflow: hidden;
+}
+
+#billsID{ 
+    list-style-type: none;
+    display: inline-block;
+    text-align: left; 
+}
+
+#billAmountsID{
+    display:inline-block;
+    text-align: left;    
+    
+}
+
+#billsID2{ 
+    list-style-type: none;
+    display: inline-block;
+    text-align: left; 
+}
+
+#billAmountsID2{
+    display:inline-block;
+    text-align: left;    
+    
+}
+
 .modal{
     display: none; 
     position: fixed; 
     z-index: 1; 
-    padding-top: 100px; 
+    padding-top: 50px; 
 
     left: 0; 
     top: 0; 
@@ -22,7 +98,7 @@
     margin: auto; 
     padding: 10px; 
     border: 1px solid #888;
-    width: 75%; 
+    width: 50%; 
 }
 
 .close{
@@ -44,7 +120,7 @@
    margin: 10px 0; 
    font-size: 0.9em; 
    font-family: sans-serif; 
-   min-width: 1000px; 
+   min-width: 200px; 
    box-shadow: 0 0 20px rgba(0,0,0,0.15); 
    z-index: 1; 
 }
@@ -93,7 +169,7 @@
     margin: auto; 
     padding: 10px; 
     border: 1px solid #888;
-    width: 75%; 
+    width: 50%; 
 }
 
 .close2{
