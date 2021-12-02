@@ -10,43 +10,43 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     const uid = user.uid;
     lookupUser(uid);
-    
-} else {
-  // User not signed in, redirect back to signin page
-  console.log("Please Sign in")
-  window.location = 'index.html'; 
-}
+
+  } else {
+    // User not signed in, redirect back to signin page
+    console.log("Please Sign in")
+    window.location = 'index.html';
+  }
 });
 
 // lookup user in userDB with auth uid
-async function lookupUser(uid){
+async function lookupUser(uid) {
   const docRef = doc(db, "User_database", uid);
   const docSnap = await getDoc(docRef);
   console.log(docSnap.userName);
 
   if (docSnap.exists()) {
-      document.getElementById('usernameID').innerHTML = 
+    document.getElementById('usernameID').innerHTML =
       docSnap.data().userName;
-      document.getElementById('emailID').innerHTML = 
+    document.getElementById('emailID').innerHTML =
       docSnap.data().email;
-      document.getElementById('phoneID').innerHTML = 
+    document.getElementById('phoneID').innerHTML =
       docSnap.data().phoneNumber;
-      // query house name in houseDB with houseID
-      var hID = docSnap.data().houseID;
-      queryHname(db, hID);
-     
+    // query house name in houseDB with houseID
+    var hID = docSnap.data().houseID;
+    queryHname(db, hID);
+
   } else {
     console.log("user not found");
   }
 }
 
-async function queryHname(db, hID) { 
+async function queryHname(db, hID) {
   const docRef = doc(db, "Household_database", hID);
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    document.getElementById('houseID').innerHTML = 
-        docSnap.data().hName;
+    document.getElementById('houseID').innerHTML =
+      docSnap.data().hName;
   } else {
     console.log("House not found");
   }
