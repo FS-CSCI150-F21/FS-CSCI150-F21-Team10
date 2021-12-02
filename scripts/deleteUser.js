@@ -8,7 +8,7 @@ const auth = getAuth();
 document.getElementById('delButton').addEventListener('click', (e) => {
     const userID = auth.currentUser.uid;
     deleteUser(userID)
-    location.reload();
+  //  location.reload();
 });
 
 async function deleteUser(userIDinput){
